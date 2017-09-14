@@ -131,7 +131,7 @@ class FmormDatabase: NSObject {
         
         while set.next() {
             
-            let result = set.resultDictionary()
+            let result = set.resultDictionary
             
             
             
@@ -211,7 +211,7 @@ class FmormDatabase: NSObject {
         
         while set.next() {
             
-            let result = set.resultDictionary()
+            let result = set.resultDictionary
             
             
             
@@ -311,7 +311,7 @@ class FmormDatabase: NSObject {
         var result = false
         
         
-        self.checkTableExists(myclass: object_getClass(entity))
+        self.checkTableExists(myclass: object_getClass(entity)!)
         
         let info = SqlBuilder.buildUpdateSql(entity: entity)
         
@@ -345,7 +345,7 @@ class FmormDatabase: NSObject {
         var result = false
         
         
-        self.checkTableExists(myclass: object_getClass(entity))
+        self.checkTableExists(myclass: object_getClass(entity)!)
         
         
         
@@ -375,7 +375,7 @@ class FmormDatabase: NSObject {
         
         
         
-        self.checkTableExists(myclass: object_getClass(entity))
+        self.checkTableExists(myclass: object_getClass(entity)!)
         
         let info = SqlBuilder.buildInsertSql(entity: entity)
         
@@ -520,9 +520,9 @@ class FmormDatabase: NSObject {
         
         
         databasepool?.inDatabase({ (db) in
-            let db = db!
+            let db = db
             
-            set = db.executeQuery(sql, withArgumentsIn: values)
+            set = db.executeQuery(sql, withArgumentsIn: values)!
             
             if db.hadError(){
                 
@@ -545,11 +545,11 @@ class FmormDatabase: NSObject {
         var state = false
         
         databasequeqe!.inTransaction { (db, roollback) in
-            let db = db!
+            let db = db
             
             for sql in sqls{
                 
-                state = db.executeUpdate(sql, withParameterDictionary: nil)
+                state = db.executeUpdate(sql, withParameterDictionary: [:])
                 
                 if !state{
                     break
@@ -593,9 +593,9 @@ class FmormDatabase: NSObject {
         
         databasepool!.inDatabase { (db) in
             
-            let db = db!
+            let db = db
             
-            state = db.executeUpdate(sql, withParameterDictionary: param)
+            state = db.executeUpdate(sql, withParameterDictionary: param!)
             
             if state{
                 

@@ -178,7 +178,7 @@ class SqlBuilder: NSObject {
     class   func buildInsertSql(entity:AnyObject) ->  SqlInfo {
         let sqlInfo = SqlInfo()
         
-        let tableInfo = TableInfo.getTableInfo(myclass: object_getClass(entity))
+        let tableInfo = TableInfo.getTableInfo(myclass: object_getClass(entity)!)
         
         
         
@@ -351,7 +351,7 @@ class SqlBuilder: NSObject {
     class   func buildUpdateSql(entity:AnyObject) ->  SqlInfo {
         let sqlInfo = SqlInfo()
         
-        let tableInfo = TableInfo.getTableInfo(myclass: object_getClass(entity))
+        let tableInfo = TableInfo.getTableInfo(myclass: object_getClass(entity)!)
         
         
         

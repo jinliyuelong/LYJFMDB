@@ -79,9 +79,9 @@ class TableInfo: NSObject {
             // 通过下标获取
             let property = properties?[i]
             
-            let propertyName = String.init(cString: property_getName(property), encoding: .utf8)
+            let propertyName = String.init(cString: property_getName(property!), encoding: .utf8)
             
-            let attributeName = String.init(cString: property_getAttributes(property), encoding: .utf8)
+            let attributeName = String.init(cString: property_getAttributes(property!)!, encoding: .utf8)
             
             
             if (attributeName?.contains("PrimaryKey"))! {
